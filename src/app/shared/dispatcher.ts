@@ -14,7 +14,15 @@ export class Dispatcher<T, A> {
         this.event$ = this.subject.asObservable();
     }
 
-    dispatch(payload:Action<T, A>) {
-        this.subject.next(payload);
+    dispatch(payload:Action<T, A>) : Promise<any> {
+        return new Promise((resolve, reject) => {
+            try {
+                this.subject.next(payload);
+                resolve(payload);
+            }
+            catch (error) {
+                reject(error);
+            }
+        });
     }
 }

@@ -19,13 +19,13 @@ export class ToDoActions {
     }
 
     addItem(todo: ToDo) {
-        this.dispatcher.dispatch({
+        return this.dispatcher.dispatch({
             item: todo,
             action: TodoAction.ADD_ITEM
         })
     }
     removeItem(todo: ToDo) {
-        this.dispatcher.dispatch({
+        return this.dispatcher.dispatch({
             item:todo,
             action: TodoAction.REMOVE_ITEM
         })

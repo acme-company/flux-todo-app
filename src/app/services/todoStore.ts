@@ -35,6 +35,7 @@ export class ToDoStore {
 
                 this.store.store.push(item);
                 this.subject.next(Object.assign([], this.store.store));
+
             });
 
     }

@@ -32,4 +32,8 @@ export class AppComponent {
   remove(item:ToDo) {
     this.todoActions.removeItem(item);
   }
+
+  triggerError() {
+    throw new Error("Something Went Wrong!!!");
+  }
 }

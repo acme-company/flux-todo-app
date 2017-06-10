@@ -4,7 +4,8 @@
     <div class="col-md-4"></div>
     <div class="col-md-4">
         <todoList [items]="todoStore.listChanged$ | async" (itemRemoved)="remove($event)"></todoList>
-        <button class="btn btn-md btn-primary" (click)="openDialog()">Add</button>        
+        <button class="btn btn-md btn-primary" (click)="openDialog()">Add</button> 
+        <button class="btn btn-md btn-primary" (click)="triggerError()">Trigger Error</button>        
     </div>
     <div class="col-md-4"></div>
 </div>

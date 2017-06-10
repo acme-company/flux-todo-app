@@ -35,7 +35,7 @@ export class ErrorComponent implements AfterViewInit {
   onDismiss() {
   }
   onRefresh() {
-     window.location.href = "http://" + document.location.host;
+     window.location.href =  window.location.href;
   }
 
 }

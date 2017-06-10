@@ -8,7 +8,7 @@ import { AddTodoComponent } from "./addTodo.component";
   templateUrl: './app.component.html'
 })
 export class AppComponent { 
-  @ViewChild('dialog') dialog;
+  @ViewChild('dialog') dialog:ElementRef;
   name = 'Angular'; 
   constructor (
     @Inject(ToDoStore) public todoStore: ToDoStore, 
@@ -18,13 +18,14 @@ export class AppComponent {
   }
 
   openDialog() {
-    $('.modal',this.dialog.nativeElement).modal('show');
+    $('#myModal',this.dialog.nativeElement).modal('show');
 
   }
 
   add (item:ToDo) {
+    
     this.todoActions.addItem(item).then(()=> {
-      $('.modal',this.dialog.nativeElement).modal('hide');
+      $('#myModal',this.dialog.nativeElement).modal('hide');
     });
   }
 

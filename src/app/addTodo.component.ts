@@ -21,6 +21,7 @@ export class AddTodoComponent implements OnInit {
     ngOnInit() { }
 
     onSave() {
+        
         this.onAdd.next(this.formGroup.value);
         this.formGroup = this.fb.group({
             'name': ['']

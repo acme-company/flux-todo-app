@@ -1,13 +1,18 @@
-<h1>Hello {{name}}</h1>
-
-<div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-        <todoList [items]="todoStore.listChanged$ | async" (itemRemoved)="remove($event)"></todoList>
-        <button class="btn btn-md btn-primary" (click)="openDialog()">Add</button> 
-        <button class="btn btn-md btn-primary" (click)="triggerError()">Trigger Error</button>        
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <errorView></errorView>
+        </div>
+        <div class="col-md-4">
+            <todoList [items]="todoStore.listChanged$ | async" (itemRemoved)="remove($event)"></todoList>
+            <button class="btn btn-md btn-primary" (click)="openDialog()">Add</button>
+            <button class="btn btn-md btn-primary" (click)="triggerError1()">Trigger Error 1</button>
+            <button class="btn btn-md btn-primary" (click)="triggerError2()">Trigger Error 2</button>
+        </div>
+        <div class="col-md-4">
+        </div>
     </div>
-    <div class="col-md-4"></div>
 </div>
 
-<add-todo #dialog (onAdd)="add($event)" ></add-todo>
+<add-todo #dialog (onAdd)="add($event)"></add-todo>

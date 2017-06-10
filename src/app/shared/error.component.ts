@@ -1,6 +1,6 @@
 import { Component, Inject, Input, ChangeDetectionStrategy, EventEmitter, Output, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { ErrorStore } from "./services/errorStore";
-import { GeneralError, ErrorActions } from "./services/errorActions";
+import { ErrorStore } from "../services/errorStore";
+import { GeneralError, ErrorActions } from "../services/errorActions";
 
 @Component({
   selector: 'error',
@@ -16,7 +16,7 @@ export class ErrorComponent implements AfterViewInit {
  
   ngAfterViewInit() {
       this.errorStore.listChanged$.subscribe(t=> {
-         this.error = t[0];
+         this.error = t.slice().reverse()[0];
          this.error.stacktrace = this.error.stacktrace.replace('\n','<br />');
          this.openDialog();
       });

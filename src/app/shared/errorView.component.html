@@ -1,0 +1,12 @@
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Latest 5 Errors</div>
+  <div class="panel-body">
+    <p>...</p>
+  </div>
+
+  <!-- List group -->
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let error of errors">{{error.message}}</li>
+  </ul>
+</div>

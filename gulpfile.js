@@ -97,5 +97,14 @@ gulp.task('clean', function() {
     ]);
 });
 
+gulp.task('clean:dev', function() {
+    return del([
+        "src/**/*.js",
+        "src/**/*.map",
+        "src/**/*.d.ts",
+    ]);
+});
+
+
 gulp.task('serve', shell.task('"node_modules/.bin/live-server" dist --entry-file="index.html"'));
 

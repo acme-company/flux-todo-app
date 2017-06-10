@@ -4,9 +4,9 @@
     <div class="col-md-4"></div>
     <div class="col-md-4">
         <todoList [items]="todoStore.listChanged$ | async" (itemRemoved)="remove($event)"></todoList>
-        <button class="btn btn-md btn-primary" (click)="add()">Add</button>        
+        <button class="btn btn-md btn-primary" (click)="openAddDialog()">Add</button>        
     </div>
     <div class="col-md-4"></div>
 </div>
 
-<add-todo></add-todo>
+<add-todo (onAdd)="add($event)" ></add-todo>

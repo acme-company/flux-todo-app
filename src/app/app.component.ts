@@ -17,12 +17,14 @@ export class AppComponent {
     });
   }
 
-  add() {
+  openAddDialog() {
     $('.modal').modal('show');
-    this.todoActions.addItem({
-      id:0,
-      name: 'Something Else'
-    });
+
+  }
+
+  add (item:ToDo) {
+    this.todoActions.addItem(item);
+    $('.modal').modal('hide');
   }
 
   remove(item:ToDo) {

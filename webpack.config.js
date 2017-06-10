@@ -4,7 +4,7 @@ const ngTools = require('@ngtools/webpack');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
    devtool: 'source-map',
@@ -13,7 +13,7 @@ module.exports = {
   },
   entry: {
     app: 'src/main.ts',
-    polyfills: 'src/polyfills.ts'
+    polyfills: 'src/polyfills.ts'  
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -74,18 +74,27 @@ module.exports = {
       names: [ "app", "polyfills"],
        minChunks: Infinity  
     }),
+    new ExtractTextPlugin('css/styles.css'),
 
     new HtmlWebpackPlugin({
       filename: __dirname + '/dist/index.html',
       template: __dirname + '/src/index.html'
     })
 
+
   ],
   module: {
     loaders: [
       { test: /\.scss$/, loaders: ['raw-loader', 'sass-loader'] },
-      { test: /\.css$/, loader: 'raw-loader' }, { test: /\.html$/, loader: 'raw-loader' },
-      { test: /\.ts$/, loader: '@ngtools/webpack' }
+      { test: /\.css$/, use: ExtractTextPlugin.extract({use: 'css-loader' }) },
+      // { test: /\.css$/,  use: [ 'style-loader', 'css-loader' ] },      
+      // { test: /\.css$/, loader: 'raw-loader' }, 
+      { test: /\.html$/, loader: 'raw-loader' },
+      { test: /\.ts$/, loader: '@ngtools/webpack' },
+      {
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+        loader: 'file-loader?name=assets/[name].[hash].[ext]'
+      }
     ]
   }
 }

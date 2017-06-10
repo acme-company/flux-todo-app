@@ -13,7 +13,8 @@ module.exports = {
   },
   entry: {
     app: 'src/main.ts',
-    polyfills: 'src/polyfills.ts'  
+    vendor: 'src/vendor.ts',  
+    polyfills: 'src/polyfills.ts'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -21,6 +22,10 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    }),
     new ngTools.AotPlugin({
       tsConfigPath: 'tsconfig.json',
       entryModule: path.resolve(__dirname, 'src/app/app.module#AppModule')
@@ -71,7 +76,7 @@ module.exports = {
     }),
 
     new CommonsChunkPlugin({
-      names: [ "app", "polyfills"],
+      names: [ "app", "vendor", "polyfills"],
        minChunks: Infinity  
     }),
     new ExtractTextPlugin('css/styles.css'),

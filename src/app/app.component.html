@@ -1,5 +1,12 @@
 <h1>Hello {{name}}</h1>
 
-<todoList [items]="todoStore.listChanged$ | async" (itemRemoved)="remove($event)"></todoList>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <todoList [items]="todoStore.listChanged$ | async" (itemRemoved)="remove($event)"></todoList>
+        <button class="btn btn-md btn-primary" (click)="add()">Add</button>        
+    </div>
+    <div class="col-md-4"></div>
+</div>
 
-<button (click)="add()">Add</button>
+<add-todo></add-todo>

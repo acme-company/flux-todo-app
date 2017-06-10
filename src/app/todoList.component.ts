@@ -4,11 +4,33 @@ import { Input, Output, EventEmitter, ChangeDetectionStrategy, Component } from 
 @Component({
   selector: 'todoList',
   template: `
-    <ul>
-      <li *ngFor="let item of items">
-          {{ item.name }} <button (click)="remove(item)">Remove</button>
-      </li>
-  </ul>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">To Do Items</div>
+  <div class="panel-body">
+    <p>...</p>
+  </div>
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let item of items">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td><button class="btn btn-xs btn-danger" (click)="remove(item)">Remove</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
  {{ change() }}
   `,changeDetection: ChangeDetectionStrategy.OnPush
 })

@@ -18,6 +18,7 @@ export class AppComponent {
   }
 
   add() {
+    $('.modal').modal('show');
     this.todoActions.addItem({
       id:0,
       name: 'Something Else'

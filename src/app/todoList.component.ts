@@ -4,11 +4,11 @@ import { Input, Output, EventEmitter, ChangeDetectionStrategy, Component } from 
 @Component({
   selector: 'todoList',
   template: `
-<div class="panel panel-default">
+<div class="panel panel-primary">
   <!-- Default panel contents -->
   <div class="panel-heading">To Do Items</div>
   <div class="panel-body">
-    <p>...</p>
+    <p>Add To Do Items.</p>
   </div>
 
   <!-- Table -->
@@ -24,7 +24,7 @@ import { Input, Output, EventEmitter, ChangeDetectionStrategy, Component } from 
       <tr  *ngFor="let item of items">
         <td>{{ item.id }}</td>
         <td>{{ item.name }}</td>
-        <td><button class="btn btn-xs btn-danger" (click)="remove(item)">Remove</button></td>
+        <td><button class="btn btn-xs btn-danger pull-right" (click)="remove(item)">Remove</button></td>
       </tr>
     </tbody>
   </table>
